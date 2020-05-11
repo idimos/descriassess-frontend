@@ -1,0 +1,11 @@
+.toolbar-icon{
+    margin:0;
+    cursor: pointer;
+}
+.toolbar-spacer {
+    flex: 1 1 auto;
+}
+.toolbar-avatar {
+    box-shadow: none;
+    background-size: cover;
+}

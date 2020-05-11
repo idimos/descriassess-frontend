@@ -1,0 +1,46 @@
+<div 
+  *ngIf="this.Cnfg"
+  fxLayout="row" 
+  fxLayout.xs="column"
+  fxLayoutWrap
+  fxLayoutAlign="space-around"
+  fxLayoutGap="0.5%">
+
+    <mat-card>
+        <mat-card-header>
+            <img mat-card-avatar src="../../assets/yannis.jpg" alt="{{this.Cnfg.author.name}}">
+            <mat-card-title>{{this.Cnfg.author.name}}</mat-card-title>
+            <mat-card-subtitle>{{this.Cnfg.author.property}}</mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+          {{this.Cnfg.author.description}}
+        </mat-card-content>
+        <mat-card-footer>
+              <address>
+                {{this.Cnfg.author.email}}<br>
+                {{this.Cnfg.author.mobile}}
+              </address>
+        </mat-card-footer>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+          <img mat-card-avatar src="../../assets/kostas.jpg" alt="{{this.Cnfg?.consultant.name}}">
+          <mat-card-title>{{this.Cnfg.consultant.name}}</mat-card-title>
+          <mat-card-subtitle>{{this.Cnfg.consultant.property}}</mat-card-subtitle>
+      </mat-card-header>
+      
+      <mat-card-content>
+        {{this.Cnfg.consultant.description}}
+      </mat-card-content>
+      <mat-card-footer>
+        <address>
+          {{this.Cnfg.consultant.email}}<br>
+          {{this.Cnfg.consultant.mobile}}
+        </address>
+  </mat-card-footer>
+  </mat-card>
+  </div>
+
+

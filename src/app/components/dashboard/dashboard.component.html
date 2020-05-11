@@ -1,0 +1,34 @@
+<!-- <div > -->
+  <mat-accordion fxLayout="column" style="margin: 1em;">
+
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+      <mat-expansion-panel-header >
+        <mat-panel-title>
+          Personal data
+        </mat-panel-title>
+        <mat-panel-description style="  justify-content: space-between; align-items: center">
+          Display Name, photo
+          <img mat-card-avatar src="{{photoUrl}}">
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    <div fxLayout="row wrap" fxLayoutAlign="space-around" fxLayoutGap="1em" >
+      <mat-form-field fxFlex appearance="fill">
+        <mat-label>Display Name</mat-label>
+        <input matInput type="text" [(ngModel)]="displayname"> 
+        <mat-hint>Set/Update your display name</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field fxFlex appearance="fill">
+        <mat-label>Photo URL</mat-label>
+        <input matb matInput type="url" [(ngModel)]="photoUrl">
+        <mat-hint>Paste photo Url</mat-hint>
+      </mat-form-field>
+
+    </div>
+      <mat-action-row>
+        <button mat-stroked-button color="warn" (click)="updateDisplayName()">Update</button>
+        <button mat-button color="primary" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+<!-- </div> -->

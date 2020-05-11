@@ -1,0 +1,21 @@
+{
+    "author": {
+        "name"      :   "Yannis Dimos, MSc, Phd(c)", 
+        "email"     :   "ioa.dimos[at]gmail.com",
+        "mobile"    :   "+30 694 772 7674",
+        "property"  :   "Software Developer",
+        "description"   :   "I’m an accomplished individual with a strong background in front-end and back-end frameworks development tools like C/C++, PHP, JavaScript/jQuery, Angular.js, HTML5, Node.js, etc. I’ve a good understand of programming, can come up with plenty of innovative ideas and poses superb communication skills.  I’m continually evaluating and upgrading my skills so that I stay at the cutting edge of software development."
+    },
+    "app"   : {
+        "name"      :   "Descriptive Assesment",
+        "title"     :   "This software is for Primary & Secondary Schools usage",
+        "version"   :   "1.1"
+    },
+    "consultant"    :   {
+        "name"      :   "Kostas Louvaris, Phd",
+        "property"  :   "Basic Concept, Consultancy",
+        "email"     :   "klouvari[at]gmail.com",
+        "mobile"    :   "+30 694 812 3620",
+        "description"   :   "I am a Geologist - Earth Science Teacher, I have developed and modified instructional plans and methodology in descriptive assessment of students in line with their learning styles and educational needs for Geology – Geography as well as other subjects. The best way to provide a conductive atmosphere to the intellectual, physical, social, and emotional development of students is to maintain and improve professional competence."
+    }
+}

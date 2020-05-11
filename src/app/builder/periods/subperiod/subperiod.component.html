@@ -1,0 +1,91 @@
+<mat-expansion-panel [hideToggle]="false" *ngIf="subperiod; else emptyform" fxFlex>
+    <mat-expansion-panel-header>
+        <mat-panel-title>{{subperiod.name}} || {{subperiod.startdate | date}} || {{subperiod.enddate | date}}</mat-panel-title>
+        <mat-panel-description>{{subperiod.notes}}</mat-panel-description>
+    </mat-expansion-panel-header>
+    
+    <form fxLayout="column" [formGroup]="subperiodForm" novalidate *ngIf="subperiod" >
+        <mat-form-field fxFlex>
+            <input matInput formControlName="subperiodname"
+                    type="text"
+                    required
+                    [(ngModel)]="subperiod.name"
+                    placeholder="Name">
+        </mat-form-field>
+        <mat-form-field fxFlex>
+            <input matInput formControlName="subperiodnotes"
+                    type="text"
+                    [(ngModel)]="subperiod.notes"
+                    placeholder="Notes">
+        </mat-form-field>
+
+        <mat-form-field fxFlex>
+            <input matInput [matDatepicker]="subperiodstartdate" formControlName="subperiodstartdate"
+                    type="text"
+                    required 
+                    [(ngModel)]="subperiod.startdate"
+                    placeholder="start Date">
+            <mat-datepicker-toggle matSuffix [for]="subperiodstartdate"></mat-datepicker-toggle>
+            <mat-datepicker #subperiodstartdate startView="year" [startAt]="startDate"></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field fxFlex>
+            <input matInput [matDatepicker]="subperiodenddate" formControlName="subperiodenddate"
+                    type="text"
+                    required
+                    [(ngModel)]="subperiod.enddate"
+                    placeholder="End Date">
+            <mat-datepicker-toggle matSuffix [for]="subperiodenddate"></mat-datepicker-toggle>
+            <mat-datepicker #subperiodenddate startView="year" [startAt]="startDate"></mat-datepicker>
+        </mat-form-field>
+    </form>
+    <mat-action-row>
+        <button *ngIf="subperiod" mat-flat-button color="primary">Update</button>
+        <button *ngIf="subperiod" mat-flat-button color="warn" (click)="deleteSubperiod()"><span class="material-icons">delete_forever</span>Delete</button>
+    </mat-action-row>
+</mat-expansion-panel>
+
+
+<ng-template #emptyform>
+    <form fxLayout="column" [formGroup]="emptysubperiodForm" novalidate  fxFlex>
+        <mat-card>
+            <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="0.5%" class="subperiod-row">
+    
+                <mat-form-field fxFlex>
+                    <input matInput formControlName="subperiodname"
+                            type="text"
+                            required
+                            placeholder="Name">
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <input matInput formControlName="subperiodnotes"
+                            type="text"
+                            [(ngModel)]="subperiod.notes"
+                            placeholder="Notes">
+                </mat-form-field>
+    
+                <mat-form-field fxFlex>
+                    <input matInput [matDatepicker]="subperiodstartdate" formControlName="subperiodstartdate"
+                            type="text"
+                            required 
+                            [(ngModel)]="subperiod.startdate"
+                            placeholder="start Date">
+                    <mat-datepicker-toggle matSuffix [for]="subperiodstartdate"></mat-datepicker-toggle>
+                    <mat-datepicker #subperiodstartdate startView="year" [startAt]="startDate"></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <input matInput [matDatepicker]="subperiodenddate" formControlName="subperiodenddate"
+                            type="text"
+                            required
+                            [(ngModel)]="subperiod.enddate"
+                            placeholder="End Date">
+                    <mat-datepicker-toggle matSuffix [for]="subperiodenddate"></mat-datepicker-toggle>
+                    <mat-datepicker #subperiodenddate startView="year" [startAt]="startDate"></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <mat-card-actions>
+                <button mat-button color="warn" (click)="addSubperiod()"><span class="material-icons">add</span></button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+
+</ng-template>
