@@ -1,0 +1,80 @@
+<form 
+    fxLayout="column" 
+    style="padding: 1em;"
+    [formGroup]="organisationForm" 
+    novalidate 
+    *ngIf="organisationForm">
+
+    <div 
+        fxLayout="row wrap" 
+        fxLayout.lt-sm="column" 
+        fxLayoutGap="0.5%" 
+        fxLayoutGap.xs="0em" >
+
+        <mat-form-field fxFlex >
+            <input matInput type="text" formControlName="name" required>
+            <mat-hint>Organisation official name</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field fxFlex *ngIf="OrgTypes">
+            <mat-select formControlName="orgtype">
+                <mat-option *ngFor="let ot of OrgTypes" [value]="ot.name">{{ot.name}}</mat-option>
+            </mat-select>
+        </mat-form-field> 
+    </div>
+
+    <!-- [(ngModel)]="activeOrgType" -->
+    <div 
+        fxLayout="row wrap" 
+        fxLayout.lt-sm="column" 
+        fxLayoutGap="0.5%" 
+        fxLayoutGap.xs="0" 
+        style="margin-top: 1.5em;">
+        
+        <mat-form-field formGroupName="contact" fxFlex>
+            <input matInput type="text" formControlName="address" >
+            <mat-hint>Address</mat-hint>
+        </mat-form-field>
+        <mat-form-field formGroupName="contact" fxFlex>
+            <input matInput type="text" formControlName="tel">
+            <mat-hint>Telephone</mat-hint>
+        </mat-form-field>
+        <mat-form-field formGroupName="contact" fxFlex>
+            <input matInput type="text" formControlName="website">
+            <mat-hint>Website</mat-hint>
+        </mat-form-field>
+        <mat-form-field formGroupName="contact" fxFlex>
+            <input matInput type="text" formControlName="email">
+            <mat-hint>Email</mat-hint>
+        </mat-form-field>
+    </div>
+
+    <div fxLayout="row wrap" style="margin-top: 2em;">
+        <button 
+            mat-raised-button 
+            *ngIf="configurationExists"
+            color="primary" 
+            (click)="update()" 
+            style="margin-right: 1em;">
+            <mat-icon class="mat-18">refresh</mat-icon>
+            Update
+        </button>
+        <button 
+            mat-raised-button 
+            *ngIf="!configurationExists"
+            color="primary" 
+            (click)="save()" 
+            style="margin-right: 1em;">
+            <mat-icon class="mat-18">save</mat-icon>
+            Save
+        </button>
+        <button 
+            mat-raised-button 
+            *ngIf="configurationExists"
+            color="warn" 
+            (click)="delete()">
+            <mat-icon class="mat-18">delete</mat-icon>
+            Delete
+        </button>
+    </div>            
+</form>

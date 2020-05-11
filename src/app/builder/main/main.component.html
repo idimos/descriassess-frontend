@@ -1,0 +1,47 @@
+<div fxLayout="column" style="margin: 0em;">
+    <mat-toolbar color="accent" >
+        <mat-toolbar-row>
+            Configuration Process
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+
+    <div fxLayout="row wrap" fxLayoutAlign="space-around center" >
+        <button mat-icon-button (click)="buildOrganisation()" color="primary" [disabled]="!organisationEnabledBtn">
+            <mat-icon class="mat-18">apartment</mat-icon>Organisation
+        </button>
+
+        <button mat-icon-button (click)="buildPeriods()" color="primary" [disabled]="!periodsEnabledBtn">
+            <mat-icon class="mat-18">calendar_today</mat-icon>Periods
+        </button>
+
+        <button mat-icon-button (click)="buildDepartments()" color="primary" [disabled]="!departmentsEnabledBtn">
+            <mat-icon class="mat-18">extension</mat-icon>Departments
+        </button>
+        <button mat-icon-button (click)="buildCourses()" color="primary" [disabled]="!coursesEnabledBtn">
+            <mat-icon class="mat-18">school</mat-icon>Courses
+        </button>
+        <button mat-icon-button (click)="buildRubrics()" color="primary" [disabled]="!rubricsEnabledBtn">
+            <mat-icon class="mat-18">class</mat-icon>Rubrics
+        </button>
+        <button mat-icon-button (click)="buildStudents()" color="primary" [disabled]="!studentsEnabledBtn">
+            <mat-icon class="mat-18">group_add</mat-icon>Students
+        </button>
+    </div>
+<mat-divider></mat-divider>
+
+<div fxLayout="row" fxLayoutAlign="center" style="padding: 2em; " *ngIf="startButtonShow">
+    <button 
+        mat-raised-button 
+        class = "starbutton"
+        (click)="startConfiguration()"
+        color="primary">
+        Start Configuration
+    </button>
+   
+</div>
+
+<router-outlet></router-outlet>
+
+</div>
+

@@ -1,0 +1,152 @@
+<mat-card>
+    <mat-card-header>
+        <div mat-card-avatar class="logo-image"></div>
+        <mat-card-title>Periods</mat-card-title>
+        <mat-card-subtitle>Setup your Periods</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+        <form 
+            fxLayout="column" 
+            [formGroup]="periodForm" 
+            novalidate >
+        
+            <div fxLayout="column">
+                <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="0.5%">
+                    <mat-form-field fxFlex>
+                        <input matInput formControlName="periodname"
+                                type="text"
+                                required
+                                placeholder="Name">
+                    </mat-form-field>
+                    <mat-form-field fxFlex>
+                        <input matInput formControlName="periodnotes"
+                                type="text"
+                                placeholder="Notes">
+                    </mat-form-field>
+                </div>
+        
+                <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="0.5%">
+                    <mat-form-field fxFlex>
+                        <input matInput [matDatepicker]="startdate" formControlName="startdate"
+                                type="text"
+                                required
+                                placeholder="start Date">
+                        <mat-datepicker-toggle matSuffix [for]="startdate"></mat-datepicker-toggle>
+                        <mat-datepicker #startdate startView="year" [startAt]="startDate"></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field fxFlex>
+                        <input matInput [matDatepicker]="enddate" formControlName="enddate"
+                                type="text"
+                                required
+                                placeholder="End Date">
+                        <mat-datepicker-toggle matSuffix [for]="enddate"></mat-datepicker-toggle>
+                        <mat-datepicker #enddate startView="year" [startAt]="startDate"></mat-datepicker>
+                    </mat-form-field>
+                </div>   
+            </div>
+        </form>
+
+        <mat-accordion displayMode="flat" [multi]="true" [hideToggle]="false">
+            <app-subperiod 
+                [subperiod]="sp" 
+                [counter]="i" 
+                [periodid]="activePeriod._id"
+                *ngFor="let sp of activePeriod.subperiods; let i=index">
+            </app-subperiod>
+        </mat-accordion>
+
+            <app-subperiod *ngIf="addsubPeriodFlag" style="margin-top: 1em;"
+                [subperiod]=null
+                [counter]="0" 
+                [periodid]="activePeriod._id">
+            </app-subperiod>
+        
+    </mat-card-content>
+    <mat-card-actions align="start">
+        <button mat-raised-button color="primary" (click)=update()><mat-icon class="mat-18">refresh</mat-icon>Update</button>
+        <button mat-raised-button color="warn" (click)=delete()><mat-icon class="mat-1">delete-outline</mat-icon>Delete</button>
+        <button mat-raised-button color="primary" (click)=addsubperiod()><mat-icon class="mat-1">add</mat-icon>Add SubPeriod</button>
+    </mat-card-actions>
+</mat-card>
+
+
+
+<!-- <form 
+    fxLayout="column" 
+    style="padding: 1em;"
+    [formGroup]="periodForm" 
+    novalidate 
+    *ngIf="periodForm == null">
+
+    <div 
+        fxLayout="row wrap" 
+        fxLayout.lt-sm="column" 
+        fxLayoutGap="0.5%" 
+        fxLayoutGap.xs="0em" >
+
+        <mat-form-field fxFlex >
+            <input matInput type="text" formControlName="name">
+            <mat-hint>Period name</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field fxFlex >
+            <input matInput type="text" formControlName="notes">
+            <mat-hint>Notes</mat-hint>
+        </mat-form-field> 
+    </div> -->
+
+    <!-- <div 
+        fxLayout="row wrap" 
+        fxLayout.lt-sm="column" 
+        fxLayoutGap="0.5%" 
+        fxLayoutGap.xs="0" 
+        style="margin-top: 1.5em;">
+        
+        <mat-form-field formGroupName="contact" fxFlex>
+            <input matInput type="text" formControlName="address" >
+            <mat-hint>Address</mat-hint>
+        </mat-form-field>
+        <mat-form-field formGroupName="contact" fxFlex>
+            <input matInput type="text" formControlName="tel">
+            <mat-hint>Telephone</mat-hint>
+        </mat-form-field>
+        <mat-form-field formGroupName="contact" fxFlex>
+            <input matInput type="text" formControlName="website">
+            <mat-hint>Website</mat-hint>
+        </mat-form-field>
+        <mat-form-field formGroupName="contact" fxFlex>
+            <input matInput type="text" formControlName="email">
+            <mat-hint>Email</mat-hint>
+        </mat-form-field>
+    </div> -->
+
+    <!-- <div fxLayout="row wrap" style="margin-top: 2em;">
+        <button 
+            mat-raised-button 
+            *ngIf="configurationExists"
+            color="primary" 
+            (click)="update()" 
+            style="margin-right: 1em;">
+            <mat-icon class="mat-18">refresh</mat-icon>
+            Update
+        </button>
+        <button 
+            mat-raised-button 
+            *ngIf="!configurationExists"
+            color="primary" 
+            (click)="save()" 
+            style="margin-right: 1em;">
+            <mat-icon class="mat-18">save</mat-icon>
+            Save
+        </button>
+        <button 
+            mat-raised-button 
+            *ngIf="configurationExists"
+            color="warn" 
+            (click)="delete()">
+            <mat-icon class="mat-18">delete</mat-icon>
+            Delete
+        </button>
+    </div>             -->
+<!-- </form> -->
