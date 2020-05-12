@@ -8,7 +8,7 @@ import { BuilderRoutingModule } from './builder-routing.module';
 
 import { MainComponent } from './main/main.component';
 import { OrganisationComponent,DialogOrganisationDelete,DialogMessageConfirmation } from './organisation/organisation.component';
-import { PeriodsComponent } from './periods/periods.component';
+import { PeriodsComponent,DialogAddsubPeriod } from './periods/periods.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { CoursesComponent } from './courses/courses.component';
 import { RubricsComponent } from './rubrics/rubrics.component';
@@ -24,7 +24,7 @@ import { SubperiodComponent } from './periods/subperiod/subperiod.component';
     CoursesComponent, 
     RubricsComponent, 
     StudentsComponent,
-    DialogOrganisationDelete,DialogMessageConfirmation, SubperiodComponent],
+    DialogOrganisationDelete,DialogMessageConfirmation, SubperiodComponent,DialogAddsubPeriod],
   imports: [
     CommonModule,
     BuilderRoutingModule,

@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Create New Subperiod</h2>
+
+<mat-dialog-content>
+    <form fxLayout="column" [formGroup]="emptysubperiodForm" novalidate  fxFlex style="margin-top: 1em;">
+
+        <mat-form-field fxFlex>
+            <input matInput formControlName="subperiodname"
+                    type="text"
+                    required
+                    placeholder="Name">
+        </mat-form-field>
+        <mat-form-field fxFlex>
+            <input matInput formControlName="subperiodnotes"
+                    type="text"
+                    placeholder="Notes">
+        </mat-form-field>
+
+        <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="0.5%">
+            <mat-form-field fxFlex>
+                <input matInput [matDatepicker]="subperiodstartdate" formControlName="subperiodstartdate"
+                        type="text"
+                        required 
+                        placeholder="start Date">
+                <mat-datepicker-toggle matSuffix [for]="subperiodstartdate"></mat-datepicker-toggle>
+                <mat-datepicker #subperiodstartdate startView="year" [startAt]="startDate"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <input matInput [matDatepicker]="subperiodenddate" formControlName="subperiodenddate"
+                        type="text"
+                        required
+                        placeholder="End Date">
+                <mat-datepicker-toggle matSuffix [for]="subperiodenddate"></mat-datepicker-toggle>
+                <mat-datepicker #subperiodenddate startView="year" [startAt]="startDate"></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="false">Cancel</button>
+    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+    <button mat-button [mat-dialog-close]=emptysubperiodForm.value cdkFocusInitial>Add</button>
+</mat-dialog-actions> 

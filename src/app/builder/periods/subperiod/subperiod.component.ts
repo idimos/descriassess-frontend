@@ -14,7 +14,6 @@ export class SubperiodComponent implements OnInit {
   @Input() counter : number;
   @Input() periodid : string;
   subperiodForm : FormGroup;
-  emptysubperiodForm : FormGroup;
   startDate = new Date(2018, 0, 1);
   
   constructor(
@@ -31,15 +30,16 @@ export class SubperiodComponent implements OnInit {
         subperiodstartdate:[this.subperiod.startdate,Validators.required],
         subperiodenddate:[this.subperiod.enddate,Validators.required]
       });
-    } else {
-      console.log("create empty form");
-      this.emptysubperiodForm = this.fb.group({
-        subperiodname:['',Validators.required],
-        subperiodnotes:[''],
-        subperiodstartdate:['',Validators.required],
-        subperiodenddate:['',Validators.required]
-      });      
-    }
+    } 
+    // else {
+    //   console.log("create empty form");
+    //   this.emptysubperiodForm = this.fb.group({
+    //     subperiodname:['',Validators.required],
+    //     subperiodnotes:[''],
+    //     subperiodstartdate:['',Validators.required],
+    //     subperiodenddate:['',Validators.required]
+    //   });      
+    // }
     
   }
 
@@ -48,7 +48,4 @@ export class SubperiodComponent implements OnInit {
     this.ccSrv.loadCC();
   }
 
-  addSubperiod(){
-
-  }
 }

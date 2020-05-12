@@ -50,8 +50,8 @@ deleteSubPeriod(periodid:string,subperiodid:string){
   )
 }
 
-addSubperiod(periodid:string){
-  this.http.post(environment.API_URL+`/periods/`+periodid,{}).subscribe(
+addSubperiod(periodid:string,subperiodObj:any){
+  this.http.post(environment.API_URL+`/periods/`+periodid, subperiodObj).subscribe(
     data=>{
       this._periodStore = data;
       this._period$.next(this._periodStore);      

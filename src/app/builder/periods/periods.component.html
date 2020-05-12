@@ -4,14 +4,10 @@
         <mat-card-title>Periods</mat-card-title>
         <mat-card-subtitle>Setup your Periods</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
 
-        <form 
-            fxLayout="column" 
-            [formGroup]="periodForm" 
-            novalidate >
-        
-            <div fxLayout="column">
+    <mat-card-content>
+        <form fxLayout="column" [formGroup]="periodForm" novalidate >
+            <div fxLayout="column" fxFlex>
                 <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="0.5%">
                     <mat-form-field fxFlex>
                         <input matInput formControlName="periodname"
@@ -47,7 +43,7 @@
             </div>
         </form>
 
-        <mat-accordion displayMode="flat" [multi]="true" [hideToggle]="false">
+        <mat-accordion displayMode="flat" [multi]="true" [hideToggle]="false" fxLayout="column">
             <app-subperiod 
                 [subperiod]="sp" 
                 [counter]="i" 
@@ -56,17 +52,52 @@
             </app-subperiod>
         </mat-accordion>
 
-            <app-subperiod *ngIf="addsubPeriodFlag" style="margin-top: 1em;"
-                [subperiod]=null
-                [counter]="0" 
-                [periodid]="activePeriod._id">
-            </app-subperiod>
+            
+        <!-- <form fxLayout="column" [formGroup]="emptysubperiodForm" novalidate  fxFlex *ngIf="addsubPeriodFlag" style="margin-top: 1em;">
+            <mat-card>
+                <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="0.5%">
+        
+                    <mat-form-field fxFlex>
+                        <input matInput formControlName="subperiodname"
+                                type="text"
+                                required
+                                placeholder="Name">
+                    </mat-form-field>
+                    <mat-form-field fxFlex>
+                        <input matInput formControlName="subperiodnotes"
+                                type="text"
+                                placeholder="Notes">
+                    </mat-form-field>
+        
+                    <mat-form-field fxFlex>
+                        <input matInput [matDatepicker]="subperiodstartdate" formControlName="subperiodstartdate"
+                                type="text"
+                                required 
+                                placeholder="start Date">
+                        <mat-datepicker-toggle matSuffix [for]="subperiodstartdate"></mat-datepicker-toggle>
+                        <mat-datepicker #subperiodstartdate startView="year" [startAt]="startDate"></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field fxFlex>
+                        <input matInput [matDatepicker]="subperiodenddate" formControlName="subperiodenddate"
+                                type="text"
+                                required
+                                placeholder="End Date">
+                        <mat-datepicker-toggle matSuffix [for]="subperiodenddate"></mat-datepicker-toggle>
+                        <mat-datepicker #subperiodenddate startView="year" [startAt]="startDate"></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <mat-card-actions>
+                    <button mat-button color="warn" (click)=storeSubperiod()><span class="material-icons">add</span>Add Subperiod</button>
+                    <button mat-button (click)="toggleEmptySubPeriodForm()">Cancel</button>
+                </mat-card-actions>
+            </mat-card>
+        </form> -->
         
     </mat-card-content>
     <mat-card-actions align="start">
         <button mat-raised-button color="primary" (click)=update()><mat-icon class="mat-18">refresh</mat-icon>Update</button>
         <button mat-raised-button color="warn" (click)=delete()><mat-icon class="mat-1">delete-outline</mat-icon>Delete</button>
-        <button mat-raised-button color="primary" (click)=addsubperiod()><mat-icon class="mat-1">add</mat-icon>Add SubPeriod</button>
+        <button mat-raised-button color="primary" (click)="openEmptySubPEriodForm()"><mat-icon class="mat-1">add</mat-icon>Add SubPeriod</button>
     </mat-card-actions>
 </mat-card>
 
